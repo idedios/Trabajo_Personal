@@ -1,0 +1,56 @@
+---
+title: "TrabajoPersonal_Irenededios"
+author: "Irene de Dios"
+date: "24/1/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+install.packages("nycflights13")
+
+```
+
+#instalamos el paquete denominado 'nycflights13'
+```{r}
+library(nycflights13)
+fly <- nycflights13::flights
+```
+
+# EJERICIO 1.Encuentra todos los vuelos que llegaron más de una hora tarde de lo previsto.
+```{r}
+retrasos = fly[which(fly$arr_delay > 60), ]
+View(retrasos)
+dim(retrasos)
+```
+#hay 27789 vuelos que salieron con una hora tarde de lo previsto
+
+
+#EJERICIO 2.Encuentra todos los vuelos que volaron hacia San Francisco (aeropuertos SFO y OAK) 
+```{r}
+ejerdos <- fly[fly$dest == "SFO" | fly$dest == "OAK",]
+```
+#13643 vuelos que volaron a San Francisco desde SFO y OAK
+
+#EJERCICIO 3. Encuentra todos los vuelos operados por United American (UA) o por American Airlines (AA) 
+```{r}
+ejertres <- fly[fly$carrier == "UA" | fly$carrier == "AA",]
+dim(ejertres)
+```
+#91394 vuelos operados por UA o AA
+
+#EJERCICIO 4.Encuentra todos los vuelos que salieron los meses de primavera (Abril, Mayo y Junio) 
+```{r}
+ejercuatro <- fly[fly$month == "4" | fly$month == "5" | fly$month == "6" ,]
+dim(ejercuatro)
+```
+#85369 vuelos que salieron en los meses de primavera
+
+#EJERCICIO 5. Encuentra todos los vuelos que llegaron más de una hora tarde pero salieron con menos de una hora de retraso. 
+```{r}
+
+ejercinco = fly[which(fly$arr_delay > 60 & fly$dep_delay < 60),]
+dim(ejercinco)
+```
+
+
+
